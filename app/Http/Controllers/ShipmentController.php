@@ -42,7 +42,7 @@ class ShipmentController extends BaseController
         // Instantiate a Courier Service class from the Courier Model
         $courier_service = CourierServiceBase::instantiateCourierService($courier_model);
 
-        // Asks the Courier Service to create the shipment
+        // Ask the Courier Service to create the shipment
         $shipment = $courier_service->createShipment($shipment_dto);
 
         return $this->sendResponse(new ShipmentResource($shipment), "Shipment created successfully");
