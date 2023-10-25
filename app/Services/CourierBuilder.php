@@ -31,7 +31,7 @@ class CourierBuilder
     {
         $this->available_couriers = $this->available_couriers
             ->filter(function (Courier $courier) use ($source_city, $dest_city) {
-                return $courier->cities->whereIn('name', [$source_city, $dest_city]);
+                return $courier->cities->contains('name', $source_city) && $courier->cities->contains('name', $dest_city);
             });
 
         return $this;
@@ -147,12 +147,12 @@ class CourierBuilder
         return $this->available_couriers;
     }
 
-    public function first(): Courier
+    public function first(): ?Courier
     {
         return $this->available_couriers->first();
     }
 
-    public function last(): Courier
+    public function last(): ?Courier
     {
         return $this->available_couriers->last();
     }

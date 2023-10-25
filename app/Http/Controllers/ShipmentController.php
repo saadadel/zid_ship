@@ -35,6 +35,10 @@ class ShipmentController extends BaseController
             $courier_model = $this->courier_director->getCourier($shipment_dto);
         }
 
+        if (is_null($courier_model)) {
+            return $this->sendError("Failed", "There isn't a courier available right now, please try again later");
+        }
+
         // Instantiate a Courier Service class from the Courier Model
         $courier_service = CourierServiceBase::instantiateCourierService($courier_model);
 

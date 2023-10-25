@@ -17,7 +17,7 @@ class CourierDirector
         $this->courier_builder = $courier_builder;
     }
 
-    public function getCourier(ShipmentDTO $shipment_dto): Courier
+    public function getCourier(ShipmentDTO $shipment_dto): ?Courier
     {
         // Tell the builder that we need a courier matches a specific shipment requirement
         $builder = $this->courier_builder->forShipment($shipment_dto);
