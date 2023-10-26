@@ -68,7 +68,28 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8002/api/shipment/1/status",
+					"raw": "localhost:8002/api/shipment/2/cancel",
+					"host": [
+						"localhost"
+					],
+					"port": "8002",
+					"path": [
+						"api",
+						"shipment",
+						"2",
+						"cancel"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cancel Shipment",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8002/api/shipment/1/cancel",
 					"host": [
 						"localhost"
 					],
@@ -77,7 +98,7 @@
 						"api",
 						"shipment",
 						"1",
-						"status"
+						"cancel"
 					]
 				}
 			},
