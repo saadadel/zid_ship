@@ -3,11 +3,11 @@
 namespace App\Services;
 
 use Carbon\Carbon;
-use ProductTypeEnum;
 use App\Models\Courier;
 use App\Models\Shipment;
 use App\DTOs\ShipmentDTO;
 use Illuminate\Support\Str;
+use App\Enums\ProductTypeEnum;
 use App\Enums\ShipmentStatusEnum;
 use Illuminate\Support\Facades\Log;
 

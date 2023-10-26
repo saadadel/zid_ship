@@ -63,22 +63,6 @@ class Shipment extends Model
     ];
 
     /**
-     * The "booted" method of the model.
-     */
-    protected static function booted(): void
-    {
-        static::created(function (Shipment $shipment) {
-            $shipment->courier->current_shipments += 1;
-            $shipment->courier->save();
-        });
-
-        static::updated(function (Shipment $shipment) {
-            $shipment->courier->current_shipments += 1;
-            $shipment->courier->save();
-        });
-    }
-
-    /**
      * Get the courier that owns the Shipment
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

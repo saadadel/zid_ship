@@ -23,3 +23,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/shipment/create', [ShipmentController::class, 'store']);
 Route::get('/shipment/{shipment}', [ShipmentController::class, 'show']);
 Route::get('/shipment/{shipment}/status', [ShipmentController::class, 'showStatus']);
+Route::post('/shipment/{shipment}/cancel', [ShipmentController::class, 'cancelShipment']);

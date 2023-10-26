@@ -69,4 +69,26 @@ class ShipmentController extends BaseController
 
         return $this->sendResponse(["status" => $shipmentStatus], "Status retrieved successfully");
     }
+
+    /**
+     * Display the shipment status
+     */
+    public function cancelShipment(Shipment $shipment)
+    {
+        // Instantiate a Courier Service class from the Courier Model
+        $courier_service = CourierServiceBase::instantiateCourierService($shipment->courier);
+
+        try {
+            // Asks the Courier Service to cancel the shipment
+            $cancel_res = $courier_service->cancelShipment($shipment);
+        } catch (\Throwable $th) {
+            return $this->sendError("Failed", "Cancel shipment is not allowed", 400);
+        }
+
+        if ($cancel_res) {
+            return $this->sendResponse([], "Shipment canceled successfully");
+        } else {
+            return $this->sendError("Failed", "Cancel shipment is not allowed", 400);
+        }
+    }
 }

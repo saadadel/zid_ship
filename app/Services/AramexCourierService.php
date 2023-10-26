@@ -3,14 +3,15 @@
 namespace App\Services;
 
 use Carbon\Carbon;
-use ProductTypeEnum;
 use App\Models\Shipment;
 use App\DTOs\ShipmentDTO;
 use Illuminate\Support\Str;
+use App\Enums\ProductTypeEnum;
 use App\Enums\ShipmentStatusEnum;
+use App\Contracts\CancelableCourier;
 use App\Http\Resources\WaybillLabelResource;
 
-class AramexCourierService extends CourierServiceBase
+class AramexCourierService extends CourierServiceBase implements CancelableCourier
 {
     /**
      * Mock class to simulate Aramex integration
@@ -83,5 +84,14 @@ class AramexCourierService extends CourierServiceBase
     public function mapProductType(string $product_type): ProductTypeEnum
     {
         return ProductTypeEnum::EPX;
+    }
+
+    public function cancelShipment(Shipment $shipment): bool
+    {
+        // TODO: Send cancel shipment request to Aramex
+        $shipment->status = ShipmentStatusEnum::CANCELED;
+        $shipment->save();
+
+        return true;
     }
 }

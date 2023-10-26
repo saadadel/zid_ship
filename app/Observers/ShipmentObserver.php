@@ -22,7 +22,10 @@ class ShipmentObserver
      */
     public function updated(Shipment $shipment): void
     {
-        if (array_key_exists("status", $shipment->getChanges()) && $shipment->status == ShipmentStatusEnum::COMPLETED) {
+        if (
+            array_key_exists("status", $shipment->getChanges()) &&
+            in_array($shipment->status, [ShipmentStatusEnum::COMPLETED, ShipmentStatusEnum::CANCELED])
+        ) {
             $shipment->courier->current_shipments -= 1;
             $shipment->courier->save();
         }
