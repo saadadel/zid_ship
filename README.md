@@ -57,3 +57,6 @@ docker run --rm \
 - Run the seeder `php artisan db:seed`
 - Start the server `php artisan serve`
 - Run the test cases `php artisan test`
+
+### API Usage
+Find the postman collection under the root of the project, file name `Zid Task.postman_collection.json`

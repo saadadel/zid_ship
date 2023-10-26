@@ -1,0 +1,87 @@
+{
+	"info": {
+		"_postman_id": "bfb414de-ed29-421d-94bb-84192108d5b2",
+		"name": "Zid Task",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5491055",
+		"_collection_link": "https://galactic-desert-723527.postman.co/workspace/My-Workspace~dedacccd-8d81-49ce-8fc2-b8c762a54e44/collection/5491055-bfb414de-ed29-421d-94bb-84192108d5b2?action=share&source=collection_link&creator=5491055"
+	},
+	"item": [
+		{
+			"name": "Create Shipment",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    // \"courier_id\": 2, \n    \"courier_selection_method\": \"fast\", // Client eathier passes the courier_id or this attribute. available options: fast, cheap\n    \"consignee_name\": \"Donatello\",\n    \"consignee_email\": \"donatello@me.com\",\n    \"consignee_phone\": \"+9640102049322\",\n    \"due_date\": \"2023-10-30 12:00:00\",\n    \"pickup_address_id\": 1,\n    \"delivery_address_id\": 2,\n    \"length\": 25.00,\n    \"width\": 25.25,\n    \"height\": 25.50,\n    \"weight\": 25.00,\n    \"num_of_pieces\": 4,\n    \"products_type\": \"PDX\", // Available options: PDX, PPX, EPX\n    \"payment_type\": \"COD\",\n    \"origin_country_code\": \"SA\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8002/api/shipment/create",
+					"host": [
+						"localhost"
+					],
+					"port": "8002",
+					"path": [
+						"api",
+						"shipment",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Shipment",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8002/api/shipment/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8002",
+					"path": [
+						"api",
+						"shipment",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Status",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8002/api/shipment/1/status",
+					"host": [
+						"localhost"
+					],
+					"port": "8002",
+					"path": [
+						"api",
+						"shipment",
+						"1",
+						"status"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
